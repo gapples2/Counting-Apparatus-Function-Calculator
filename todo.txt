@@ -1,0 +1,67 @@
+Name - Syntax - Difficulty - Complete
+
+
+---- Main ---
+
+Absolute Value          - |x|                       - 1 - true
+Abundant Numbers        - Abu(n)                    - ? - false
+Ackermann               - A(m, n)                   - 2 - false
+Airy 1st                - Ai(x)                     - 5 - false
+Airy 2nd                - Bi(x)                     - 5 - false
+Aliquot Sum             - s(a)                      - 3 - false
+Alternating Factorial   - af(n)                     - 2 - true
+AND bitwise             - x & y                     - 1 - true
+Apery Numbers           - A_n                       - 4 - true
+AGM                     - AGM(x, y)                 - 3 - true
+Arithmean               - AM[n](x_1, x_2, ..., x_n) - 2 - false
+Ballot Numbers          - Bal(n)                    - 3 - true
+Baxter Numbers          - Bax(n)                    - 2 - true
+Bracket Function        - [[n]]                     - 3 - true
+Cacti Numbers           - <cactus>(n)               - 4 - false
+Cas                     - cas(x)                    - 2 - false
+Catalan                 - C(n)                      - 2 - true
+Central Factorial       - n^[!]                     - 2 - true
+Chord                   - Crd(x)                    - 4 - false
+Cis                     - cis(x)                    - 4 - false
+Complex Arg             - arg(x, y)                 - 5 - false
+Concat                  - m||n                      - 1 - true
+Cosectant               - csc(x)                    - 2 - false
+Cosine                  - cos(x)                    - 1 - true
+Cos Integral            - Ci(x)                     - 5 - false
+Cotangent               - cot(x)                    - 2 - false
+Covercosine             - cvc(x)                    - 4 - false
+Coversine               - cvs(x)                    - 4 - false
+Derangement             - !x                        - 2 - true
+Derivative              - (f(x))'                   - 5 - false
+Determinants            - det(X) : m = n            - 5 - false
+Digital Root            - drt(n)                    - 3 - true
+Digital Sum             - dsm(n)                    - 2 - true
+Division                - x / y                     - 1 - true
+E_n Function            - {E_n}(x)                  - 5 - false
+Euclid-Mullin           - EM(n)                     - 3 - false
+Euler Numbers           - E(n)                      - 4 - false
+Geomean                 - GM[n](x_1, x_2, ..., x_n) - 3 - false
+Harmonic                - H(x)                      - 2 - false
+Hyperbolic Cosine       - Chi(x)                    - 4 - false
+Impolite Numbers        - imp(n)                    - 1 - true
+K Function              - K(x)                      - 4 - false
+Lambert W               - W(x)                      - 5 - false
+Legendre Chi            - χ[ν](z)                   - 5 - false
+Log Integral            - Li(x)                     - 5 - false
+Lucus Number            - L(n)                      - 2 - true
+Natural Log             - ln(x)                     - 1 - true
+OR Bitwise              - m | n                     - 1 - true
+Parity Factorial        - x!!                       - 2 - true
+Partition               - P(n)                      - 5 - false
+Pi Function (factorial) - x!                        - 2 - true
+Sine Integral           - Si(x)                     - 3 - true
+Super Catalan           - S(n)                      - 2 - true
+Superfactorial          - sf(n)                     - 2 - true
+Triangular              - T(x)                      - 2 - true
+Upper Regularized Gamma - Q(z_1, z_2)               - 5 - false
+
+
+--- Other ---
+
+Stiring Partition Numbers
+Motzkin Numbers
