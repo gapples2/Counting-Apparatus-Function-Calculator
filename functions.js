@@ -140,9 +140,9 @@ const functions = {
         return n
     },
     kFunction(n){
-       return (2*Math.PI)**((n-1)/2)*Math.exp(functions.binomialCoefficient(n,2)*functions.integral(function(dt,t){
-           return Math.log(functions.gamma(t+1))*dt
-       },10,n-1,0))
+        let num = 1
+        for(let x=2;x<=n;x++)num*=x**x
+        return num
     },
     upperIncompleteGamma(a,x){
         return a
@@ -186,19 +186,23 @@ const functions = {
     primes(n){
         // generate all primes up to n
         n = Math.floor(n)
-        let arr = [2,3,5,7,11]
-        if(n<13)return arr.filter(a=>a>=n)
-        for(let num=13;num<n;num++){
-            if(num%2>0&&num%3>0&&num%5>0&&num%7>0&&num%11>0)arr.push(num)
+        let arr = [2,3,5,7,11,13]
+        if(n<17)return arr.filter(a=>a>=n)
+        let t = Date.now()
+        for(let num=17;num<=n;num++){
+            if(num%2>0&&num%3>0&&num%5>0&&num%7>0&&num%11>0&&num%13>0)arr.push(num)
         }
+        console.log(Date.now()-t)
+        t = Date.now()
         for(let x=5;x<arr.length;x++){
             arr = arr.filter((a,b)=>b==x||a%arr[x]>0)
         }
+        console.log(Date.now()-t)
         return arr
     },
     composites(n){
         let primes = functions.primes(Math.floor(n))
-        return ([...Array(Math.floor(n)).keys()]).slice(4).filter(a=>!primes.includes(a))
+        return ([...Array(Math.floor(n)).keys(),n]).slice(4).filter(a=>!primes.includes(a))
     },
     composite(n){
         if(n==2)return 6
@@ -266,4 +270,46 @@ const functions = {
         }
         return a
     },
+    ehsNumbers(n){
+        let nums = ([...Array(n).keys(),n]).slice(8)
+        let primes = mprimes
+        nums = nums.filter(num=>{
+            let good = false
+            for(let x=0;x<primes.length;x++){
+                if(primes[x]%num==1)continue;
+                let a = 1
+                for(let y=2;y<=num;y++)a=(a*y)%primes[x]
+                if((a+1)%primes[x]==0){
+                    console.log(num,primes[x])
+                    good = true
+                    break;
+                }
+            }
+            return good
+        })
+        return nums
+    },
+    ehs(n){
+        
+    },
+    bitwiseNot(n){
+        let num = n.toString(2)
+        let a = 0
+        for(let x=num.length-1;x>=0;x--)a+=(num[x]=="0"?(2**(num.length-1-x)):0)
+        return a
+    },
+    bitwiseOr(x,y){
+        return x|y
+    },
+    bitwiseAnd(x,y){
+        return x&y
+    },
+    primorial(n){
+        let num = 1
+        for(let x=0;x<mprimes.length;x++){
+            if(mprimes[x]>n)return num
+            num*=mprimes[x]
+        }
+        return 1
+    }
 }

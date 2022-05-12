@@ -16,6 +16,8 @@ function createEle(x,options){
 }
 
 function format(num,p=2){
+    if(num==Infinity)return "Infinity"
+    if(Number.isNaN(num))return "NaN"
     if(num<1e3)return num.toFixed(p)
     if(num<1e9)return Math.floor(num).toLocaleString("en-US")
     let e = Math.floor(Math.log10(num))
@@ -81,7 +83,7 @@ function generateValues(func,nums){
     }
     if(!done){
         if(!functionResultCache[func.name])functionResultCache[func.name]=[]
-        if(!functionResultCache[func.name][nums.join(",")])functionResultCache[func.name][nums.join(",")] = format(func(...nums))
+        if(!functionResultCache[func.name][nums.join(",")])functionResultCache[func.name][nums.join(",")] = func(...nums)
         vals[nums.join(", ")] = functionResultCache[func.name][nums.join(",")]
     }
     return vals
@@ -91,7 +93,9 @@ function clearOutput(){
     getEle("out").innerHTML = ""
 }
 
-const bad = ["sigma","integral","motzkin","upperIncompleteGamma","composites","primes","stirlingPartitionNumber","upperGamma","binomialCoefficient","triangular","conwayGuy","abundant","eulerNumber","divisors","ramanujanPrime","duchonNumber"]
+const bad = ["sigma","integral","motzkin","upperIncompleteGamma","composites","primes","stirlingPartitionNumber",
+             "upperGamma","binomialCoefficient","triangular","conwayGuy","abundant","eulerNumber","divisors",
+             "ramanujanPrime","duchonNumber","ehs","ehsNumbers"]
 
 const functionResultCache = {}
 
@@ -113,7 +117,7 @@ function generateFunctionList(){
                 let nums = generateValues(functions[keys[x*colAmt+y]],getInputs(len||inputElements.length))
                 let s = ""
                 Object.keys(nums).forEach(a=>{
-                    s+=a+": "+nums[a]+"<br>"
+                    s+=a+": "+format(nums[a])+"<br>"
                 })
                 getEle("out").innerHTML = s.slice(0,-4)
             })
