@@ -255,10 +255,11 @@ const functions = {
         return 0
     },
     divisors(n){
+        if(n==0)return []
         let max = Math.floor(Math.sqrt(n))
         let div = [[1,n]]
-        for(let x=2;x<max;x++){
-            if(n/x%1==0)div.push(x,n/x)
+        for(let x=2;x<=max;x++){
+            if(n/x%1==0)div.push([x,n/x])
         }
         return div
     },
@@ -311,5 +312,42 @@ const functions = {
             num*=mprimes[x]
         }
         return 1
+    },
+    aliquotSum(n){
+        if(n==1)return 0
+        return functions.divisors(n).flat().filter(a=>a<n).reduce((p,a)=>p+a,0)-(Math.sqrt(n)%1==0?Math.sqrt(n):0)
+    },
+    baseDecimal(n,b){
+        let a = []
+        while(n>0){
+            a.push(n%b)
+            n=Math.floor(n/b)
+        }
+        return a.reverse()
+    },
+    brazilianNumber(n){
+        let nums = []
+        let max = Math.floor(n*1.25**(Math.sqrt(n))+6)
+        for(let x=7;x<=max;x++){
+            if(x%2==0){
+                nums.push(x)
+                continue;
+            }
+            let good = false
+            let xp = x+1
+            for(let y=2;y<x-1;y++){
+                let g = true
+                let b = functions.baseDecimal(x,y)
+                for(let z=1;z<b.length;z++){
+                    if(b[z]!=b[z-1])g=false
+                }
+                if(g){
+                    good=true
+                    break;
+                }
+            }
+            if(good)nums.push(x)
+        }
+        return nums[n-1]
     }
 }

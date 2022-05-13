@@ -16,6 +16,7 @@ function createEle(x,options){
 }
 
 function format(num,p=2){
+    if(num===undefined)return "undefined"
     if(num==Infinity)return "Infinity"
     if(Number.isNaN(num))return "NaN"
     if(num<1e3)return num.toFixed(p)
@@ -95,7 +96,7 @@ function clearOutput(){
 
 const bad = ["sigma","integral","motzkin","upperIncompleteGamma","composites","primes","stirlingPartitionNumber",
              "upperGamma","binomialCoefficient","triangular","conwayGuy","abundant","eulerNumber","divisors",
-             "ramanujanPrime","duchonNumber","ehs","ehsNumbers"]
+             "ramanujanPrime","duchonNumber","ehs","ehsNumbers","baseDecimal"]
 
 const functionResultCache = {}
 
